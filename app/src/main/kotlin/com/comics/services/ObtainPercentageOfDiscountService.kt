@@ -7,17 +7,12 @@ import com.comics.domain.vo.ComicStatus
 
 class ObtainPercentageOfDiscountService {
    fun apply(comic: Comic): Double {
-       var discount = 0.0
-       if (comic.status == ComicStatus.EXCELLENT) {
-           discount = ExcellentComicDiscount().apply(comic)
-       } else if (comic.status == ComicStatus.GOOD) {
-           discount = GoodComicDiscount().apply(comic)
-       } else if (comic.status == ComicStatus.ACCEPTABLE) {
-           discount = AcceptableComicDiscount().apply(comic)
-       } else if (comic.status == ComicStatus.IMPAIRED) {
-           discount = ImpairedComicDiscount().apply(comic)
-       } else if (comic.status == ComicStatus.DAMAGED) {
-           discount = DamagedComicDiscount().apply(comic)
+       val discount: Double = when(comic.status) {
+           ComicStatus.EXCELLENT -> ExcellentComicDiscount().apply(comic)
+           ComicStatus.GOOD -> GoodComicDiscount().apply(comic)
+           ComicStatus.ACCEPTABLE -> AcceptableComicDiscount().apply(comic)
+           ComicStatus.IMPAIRED -> ImpairedComicDiscount().apply(comic)
+           ComicStatus.DAMAGED -> DamagedComicDiscount().apply(comic)
        }
        return comic.price - discount
    }
