@@ -1,6 +1,5 @@
 package com.comics.domain.entities
 
-import kotlin.test.Test
 import kotlin.test.*
 
 import com.comics.domain.vo.ComicStatus
