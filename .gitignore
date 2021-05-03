@@ -10,7 +10,7 @@ build
 .vscode
 .idea
 .nbproject
-
+.project
 # Files
 
 *.log
