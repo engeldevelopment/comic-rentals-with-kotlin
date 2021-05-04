@@ -6,8 +6,8 @@ import com.comics.domain.entities.Comic
 import com.comics.domain.vo.ComicStatus
 
 
-class DiscountServiceTest {
-    val obtainPercentageOfDiscount = DiscountService()
+class AmountToPayServiceTest {
+    val amountToPayService = AmountToPayWithDiscountService()
 
     @Test
     fun `un comic excellent tendrá un diez porciento de descuento` () {
@@ -17,7 +17,7 @@ class DiscountServiceTest {
             status=ComicStatus.EXCELLENT
         )
 
-        val amount = obtainPercentageOfDiscount.apply(comic)
+        val amount = amountToPayService.calculate(comic)
 
         assertEquals(18.0, amount)
     }
@@ -30,7 +30,7 @@ class DiscountServiceTest {
             status=ComicStatus.GOOD
         )
 
-        val amount = obtainPercentageOfDiscount.apply(comic)
+        val amount = amountToPayService.calculate(comic)
 
         assertEquals(16.0, amount)
     }
@@ -43,7 +43,7 @@ class DiscountServiceTest {
             status=ComicStatus.ACCEPTABLE
         )
 
-        val amount = obtainPercentageOfDiscount.apply(comic)
+        val amount = amountToPayService.calculate(comic)
 
         assertEquals(15.0, amount)
     }
@@ -56,7 +56,7 @@ class DiscountServiceTest {
             status=ComicStatus.IMPAIRED
         )
 
-        val amount = obtainPercentageOfDiscount.apply(comic)
+        val amount = amountToPayService.calculate(comic)
 
         assertEquals(14.0, amount)
     }
@@ -69,7 +69,7 @@ class DiscountServiceTest {
             status=ComicStatus.DAMAGED
         )
 
-        val amount = obtainPercentageOfDiscount.apply(comic)
+        val amount = amountToPayService.calculate(comic)
 
         assertEquals(10.0, amount)
     }

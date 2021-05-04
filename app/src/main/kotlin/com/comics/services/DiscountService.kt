@@ -14,6 +14,6 @@ class DiscountService {
            ComicStatus.IMPAIRED -> ImpairedComicDiscount().apply(comic)
            ComicStatus.DAMAGED -> DamagedComicDiscount().apply(comic)
        }
-       return comic.price - discount
+       return discount
    }
 }
