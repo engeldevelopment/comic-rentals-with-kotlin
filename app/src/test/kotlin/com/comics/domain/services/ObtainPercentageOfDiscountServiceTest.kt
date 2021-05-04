@@ -6,8 +6,8 @@ import com.comics.domain.entities.Comic
 import com.comics.domain.vo.ComicStatus
 
 
-class ObtainPercentageOfDiscountServiceTest {
-    val obtainPercentageOfDiscount = ObtainPercentageOfDiscountService()
+class DiscountServiceTest {
+    val obtainPercentageOfDiscount = DiscountService()
 
     @Test
     fun `un comic excellent tendrá un diez porciento de descuento` () {

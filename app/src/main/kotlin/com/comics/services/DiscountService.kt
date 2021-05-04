@@ -5,7 +5,7 @@ import com.comics.domain.services.discounts.*
 import com.comics.domain.vo.ComicStatus
 
 
-class ObtainPercentageOfDiscountService {
+class DiscountService {
    fun apply(comic: Comic): Double {
        val discount: Double = when(comic.status) {
            ComicStatus.EXCELLENT -> ExcellentComicDiscount().apply(comic)
