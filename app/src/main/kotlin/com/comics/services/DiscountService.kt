@@ -6,14 +6,17 @@ import com.comics.domain.vo.ComicStatus
 
 
 class DiscountService {
-   fun apply(comic: Comic): Double {
-       val discount: Double = when(comic.status) {
-           ComicStatus.EXCELLENT -> ExcellentComicDiscount().apply(comic)
-           ComicStatus.GOOD -> GoodComicDiscount().apply(comic)
-           ComicStatus.ACCEPTABLE -> AcceptableComicDiscount().apply(comic)
-           ComicStatus.IMPAIRED -> ImpairedComicDiscount().apply(comic)
-           ComicStatus.DAMAGED -> DamagedComicDiscount().apply(comic)
+    var typeOfDiscount: Discount = ExcellentComicDiscount()
+
+    fun call(comic: Comic): Double {
+        typeOfDiscount = when(comic.status) {
+           ComicStatus.EXCELLENT -> ExcellentComicDiscount()
+           ComicStatus.GOOD -> GoodComicDiscount()
+           ComicStatus.ACCEPTABLE -> AcceptableComicDiscount()
+           ComicStatus.IMPAIRED -> ImpairedComicDiscount()
+           ComicStatus.DAMAGED -> DamagedComicDiscount()
        }
+       val discount: Double = typeOfDiscount.apply(comic)
        return discount
-   }
+    }
 }

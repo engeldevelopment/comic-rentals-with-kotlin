@@ -7,7 +7,7 @@ class AmountToPayWithDiscountService {
    val discountService: DiscountService = DiscountService()
 
    fun calculate(comic: Comic): Double {
-       val discount = discountService.apply(comic)
+       val discount = discountService.call(comic)
        return comic.price - discount
    }
 }
