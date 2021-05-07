@@ -7,7 +7,10 @@ abstract class Discount {
     abstract protected var percentageOfDiscount: Double
 
     fun apply(comic: Comic): Double {
-        val discount = (comic.price * percentageOfDiscount) / 100
-        return discount 
+        return getPercentageOfDiscount(comic.price) 
+    }
+
+    fun getPercentageOfDiscount(price: Double): Double {
+        return (price * percentageOfDiscount) / 100
     }
 }
